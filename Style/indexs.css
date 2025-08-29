@@ -64,6 +64,7 @@
             width: 100%;
             max-width: 1600px;
             margin: 0 auto;
+            height: 13vh;
         }
 
         .logo-container {
@@ -1801,6 +1802,7 @@ h1, h2, h3, h4, h5 {
     color: white;
     padding: 50px 0 20px;
     margin-top: 40px;
+   
 }
 
 .footer-heading {
@@ -1922,4 +1924,6 @@ h1, h2, h3, h4, h5 {
         justify-content: center;
     }
 }
+
+
 

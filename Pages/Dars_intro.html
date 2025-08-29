@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dars_introduction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../Style/Dars_intro.css">
+</head>
+<body>
+
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#80760d',
+                        secondary: '#37d1d4',
+                        accent: '#8e44ad',
+                        cream: '#f8f5e6',
+                        'dark-green': '#0a5c36',
+                        'text-dark': '#2c3e50',
+                        'text-light': '#ffffff',
+                        gold: '#d4af37',
+                        silver: '#b2bec3',
+                        bronze: '#cd6133',
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Loading animation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="https://cdn-icons-png.flaticon.com/512/6380/6380328.png" alt="Iqmat e Islam Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-main">Iqmat e Islam</div>
+                    <div class="logo-sub">The Way to Success</div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="nav-links">
+                <li>
+                    <a href="../index.html">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-book-open nav-icon"></i>
+                        <span class="nav-text">Dars Introduction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-map-marked-alt nav-icon"></i>
+                        <span class="nav-text">Areas Covered</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-building nav-icon"></i>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-flask nav-icon"></i>
+                        <span class="nav-text">Research & Dev</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-star nav-icon"></i>
+                        <span class="nav-text">Reviews</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-calendar-alt nav-icon"></i>
+                        <span class="nav-text">Long Term Plans</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dars Introduction Section -->
+    <section class="dars-intro">
+        <!-- Background Slideshow -->
+        <div class="bg-slideshow">
+            <div class="bg-slide active" style="background-image: url('https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+            <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1587132137058-ceb6decbba70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+            <div class="bg-slide" style="background-image: url('https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80');"></div>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="overlay"></div>
+        
+        <!-- Particles -->
+        <div class="particles" id="particles"></div>
+        
+        <!-- Laser Effect -->
+        <div class="laser-effect" style="top: 30%; width: 80%;"></div>
+        <div class="laser-effect" style="top: 70%; width: 60%; animation-delay: 1.5s;"></div>
+        
+        <!-- Content -->
+        <div class="container content">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="section-title display-4 mb-4">Weekly Dars Gathering</h1>
+                    <p class="lead text-light mb-5">Join us for a spiritual journey through Quran and Sunnah</p>
+                    
+                    <!-- Video Section -->
+                    <div class="video-container mb-5">
+                        <div class="video-wrapper">
+                            <!-- Replace with your actual video -->
+                            <iframe src="https://www.youtube.com/embed/9xwazD5SyVg" allowfullscreen></iframe>
+                        </div>
+                        
+                    </div>
+                    
+                    <a href="#features" class="btn btn-lg mt-3" style="background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 30px;">
+                        Learn More <i class="fas fa-arrow-down ms-2"></i>
+                    </a><br><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="features-title display-5 mb-5">What Includes in Our Dars</h2>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <h3 class="feature-title">45 min Dars Quran</h3>
+                        <p>Some ayats with translation and explanation</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                        <h3 class="feature-title">30 min Discussion</h3>
+                        <p>After dars between the peoples</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h3 class="feature-title">Everyone Can Participate</h3>
+                        <p>In dars and discussion</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3 class="feature-title">Weekly Changing Dars</h3>
+                        <p>Dars changed after every week</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                        <h3 class="feature-title">No Sectarianism</h3>
+                        <p>We focus on unity in Islam</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-book-quran"></i></div>
+                        <h3 class="feature-title">Quran and Sunnah</h3>
+                        <p>Hadith and Quran only as sources</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="feature-title">Final Lessons</h3>
+                        <p>Final result and lessons from dars</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-place-of-worship"></i></div>
+                        <h3 class="feature-title">Good Spaces</h3>
+                        <p>Comfortable spaces for peoples</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-door-open"></i></div>
+                        <h3 class="feature-title">Open to All</h3>
+                        <p>Every one can come</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+                        <h3 class="feature-title">Refreshment</h3>
+                        <p>After dars according to the finance condition</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calendar-day"></i></div>
+                        <h3 class="feature-title">Weekly Schedule</h3>
+                        <p>Every week on Sunday and in some branches on Saturday</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+       <!-- Importance of Quran Section -->
+       <section class="quran-importance">
+        <!-- Shining dots -->
+        <div class="shining-dots-container"></div>
+        
+        <div class="quran-container">
+            <div class="quran-image">
+                <img src="../Assets/Gallery/impofquran.jpeg" alt="Importance of Quran">
+            </div>
+            
+            <div class="quran-content">
+                <h2 class="section-heading">Importance of Quran</h2>
+                
+                <ul class="importance-points">
+                    <li class="point">
+                        <div class="point-header">
+                            <div class="point-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="point-title">Divine Guidance</h3>
+                        </div>
+                        <p class="point-description">The Quran is the ultimate source of guidance for humanity, providing clear direction for all aspects of life.</p>
+                    </li>
+                    
+                    <li class="point">
+                        <div class="point-header">
+                            <div class="point-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="point-title">Spiritual Healing</h3>
+                        </div>
+                        <p class="point-description">Reciting and understanding the Quran brings peace to the heart and healing to the soul.</p>
+                    </li>
+                    
+                    <li class="point">
+                        <div class="point-header">
+                            <div class="point-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <h3 class="point-title">Moral Framework</h3>
+                        </div>
+                        <p class="point-description">The Quran establishes a comprehensive ethical system that promotes justice, compassion, and righteousness.</p>
+                    </li>
+                    
+                    <li class="point">
+                        <div class="point-header">
+                            <div class="point-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3 class="point-title">Eternal Wisdom</h3>
+                        </div>
+                        <p class="point-description">As the literal word of Allah, the Quran contains timeless wisdom applicable to all eras and societies.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class="main-container">
+        <h1 class="section-title">Why Quran?</h1>
+        
+        <p class="intro-text">
+            The Quran is the eternal miracle and final revelation from Allah to humanity. 
+            It serves as a comprehensive guide for life, providing wisdom, direction, and spiritual nourishment.
+            Explore the profound reasons why the Quran is essential for every Muslim.
+        </p>
+        
+        <div class="faq-container">
+            <div class="faq-header">
+                <h2 class="faq-title">Frequently Asked Questions</h2>
+                <p class="faq-subtitle">Click on questions to reveal answers</p>
+            </div>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Why is the Quran considered a miracle?</h3>
+                        <div class="faq-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>The Quran is considered the ultimate miracle for several reasons:</p>
+                            <ul>
+                                <li><strong>Linguistic Excellence:</strong> Its Arabic language is unparalleled in eloquence and style</li>
+                                <li><strong>Scientific Accuracy:</strong> Contains scientific facts that were unknown 1400 years ago</li>
+                                <li><strong>Prophetic Predictions:</strong> Accurate predictions of future events</li>
+                                <li><strong>Divine Preservation:</strong> Perfectly preserved without any alteration since revelation</li>
+                                <li><strong>Spiritual Impact:</strong> Transforms individuals and societies who follow its guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How does the Quran provide guidance for modern life?</h3>
+                        <div class="faq-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>The Quran offers timeless principles that apply to all aspects of modern life:</p>
+                            <ul>
+                                <li><strong>Ethical Framework:</strong> Provides clear moral guidelines for personal and social conduct</li>
+                                <li><strong>Social Justice:</strong> Advocates for equality, fairness, and compassion</li>
+                                <li><strong>Family Structure:</strong> Offers guidance on marriage, parenting, and family relationships</li>
+                                <li><strong>Economic Principles:</strong> Forbids exploitation and promotes fair trade and charity</li>
+                                <li><strong>Environmental Stewardship:</strong> Encourages conservation and responsible use of resources</li>
+                                <li><strong>Conflict Resolution:</strong> Provides principles for justice and reconciliation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What makes the Quran different from other religious texts?</h3>
+                        <div class="faq-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>The Quran is unique among religious scriptures in several fundamental ways:</p>
+                            <ul>
+                                <li><strong>Direct Divine Words:</strong> It is the literal word of Allah, not inspired writings of humans</li>
+                                <li><strong>Perfect Preservation:</strong> It has been meticulously preserved in its original language</li>
+                                <li><strong>Comprehensive Guidance:</strong> Addresses all aspects of human life - spiritual, social, economic, and political</li>
+                                <li><strong>Scientific Consistency:</strong> Contains scientific facts that align with modern discoveries</li>
+                                <li><strong>Universal Message:</strong> Intended for all humanity across time and place</li>
+                                <li><strong>Recitational Nature:</strong> Its true beauty is manifested when recited, not just read</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How can the Quran transform an individual's life?</h3>
+                        <div class="faq-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Regular engagement with the Quran brings profound personal transformation:</p>
+                            <ul>
+                                <li><strong>Spiritual Connection:</strong> Strengthens relationship with Allah and increases faith</li>
+                                <li><strong>Inner Peace:</strong> Provides comfort and reduces anxiety through remembrance of Allah</li>
+                                <li><strong>Moral Compass:</strong> Develops strong character and ethical decision-making</li>
+                                <li><strong>Intellectual Growth:</strong> Encourages reflection, critical thinking, and seeking knowledge</li>
+                                <li><strong>Emotional Healing:</strong> Offers solace during difficult times and hope for the future</li>
+                                <li><strong>Purpose and Direction:</strong> Clarifies life's purpose and provides guidance for decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quran-verse">
+            <p class="verse-text">"This is the Book about which there is no doubt, a guidance for those conscious of Allah."</p>
+            <p class="verse-reference">Quran, Surah Al-Baqarah (2:2)</p>
+        </div>
+        
+        
+    </div>
+
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <p class="quote">"Seeking knowledge is an obligation upon every Muslim."</p>
+            <p class="mt-3">- Prophet Muhammad (peace be upon him)</p>
+        </div>
+    </section>
+
+
+        
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../JS/Dars_intro.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
