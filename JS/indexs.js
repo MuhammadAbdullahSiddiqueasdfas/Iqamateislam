@@ -1,7 +1,51 @@
+// Main JavaScript file for Iqmat e Islam website
 
-// Create particles
+// Initialize everything when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Create particles
+    createParticles();
+    
+    // Rotate background images
+    rotateBackgrounds();
+    
+    // Initialize custom cursor
+    initCustomCursor();
+    
+    // Initialize navbar scroll effect
+    initNavbarScroll();
+    
+    // Initialize mobile menu
+    initMobileMenu();
+    
+    // Initialize typewriter effect
+    initTypewriter();
+    
+    // Initialize vision and implementation animations
+    initScrollAnimations();
+    
+    // Initialize central dars section
+    initCentralDars();
+    
+    // Initialize carousel
+    initCarousel();
+    
+    // Initialize feedback form
+    initFeedbackForm();
+    
+    // Add click event to "Explore More" button
+    document.querySelector('.hero-btn').addEventListener('click', function() {
+        // Scroll to the next section (Vision & Mission)
+        document.querySelector('.vision-mission-section').scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    });
+});
+
+// Create particles for the hero section
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+    
     const particleCount = 100;
     
     for (let i = 0; i < particleCount; i++) {
@@ -26,9 +70,11 @@ function createParticles() {
     }
 }
 
-// Background image rotation
+// Background image rotation for hero section
 function rotateBackgrounds() {
     const backgrounds = document.querySelectorAll('.hero-bg');
+    if (backgrounds.length === 0) return;
+    
     let current = 0;
     
     // Set initial active background
@@ -48,152 +94,79 @@ function rotateBackgrounds() {
     }, 3000);
 }
 
-// Custom cursor
-document.addEventListener('mousemove', (e) => {
+// Initialize custom cursor
+function initCustomCursor() {
     const cursor = document.querySelector('.custom-cursor');
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
+    if (!cursor) return;
+    
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
 
-document.querySelectorAll('a, button, .nav-links li').forEach(item => {
-    item.addEventListener('mouseenter', () => {
-        document.querySelector('.custom-cursor').classList.add('hover');
+    document.querySelectorAll('a, button, .nav-links li').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            cursor.classList.add('hover');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            cursor.classList.remove('hover');
+        });
+        
+        item.addEventListener('click', () => {
+            cursor.classList.add('click');
+            setTimeout(() => {
+                cursor.classList.remove('click');
+            }, 300);
+        });
     });
-    
-    item.addEventListener('mouseleave', () => {
-        document.querySelector('.custom-cursor').classList.remove('hover');
-    });
-    
-    item.addEventListener('click', () => {
-        document.querySelector('.custom-cursor').classList.add('click');
-        setTimeout(() => {
-            document.querySelector('.custom-cursor').classList.remove('click');
-        }, 300);
-    });
-});
+}
 
 // Navbar scroll effect
-window.addEventListener('scroll', () => {
+function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+    if (!navbar) return;
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+}
 
 // Mobile menu toggle
-document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
-    document.querySelector('.nav-links').classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('active');
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    if (!menuBtn) return;
+    
+    menuBtn.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('active');
     });
-});
-
-// Initialize everything when page loads
-window.addEventListener('load', () => {
-    createParticles();
-    rotateBackgrounds();
     
-    // Typewriter effect for additional text if needed
-    setTimeout(() => {
-        document.querySelector('.typewriter').style.borderRight = 'none';
-    }, 3500);
-});
-
-
-
-
-
-  // Create particles
-  function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 30;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        // Random properties
-        const size = Math.random() * 10 + 2;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 15;
-        const duration = Math.random() * 10 + 15;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}vw`;
-        particle.style.top = `${posY}vh`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.animationDuration = `${duration}s`;
-        
-        particlesContainer.appendChild(particle);
-    }
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.remove('active');
+        });
+    });
 }
 
-// Background image rotation
-function rotateBackgrounds() {
-    const backgrounds = document.querySelectorAll('.hero-bg');
-    let current = 0;
+// Typewriter effect
+function initTypewriter() {
+    const typewriter = document.querySelector('.typewriter');
+    if (!typewriter) return;
     
-    // Set initial active background
-    backgrounds.forEach((bg, index) => {
-        if (index === 0) {
-            bg.classList.add('active');
-        } else {
-            bg.classList.remove('active');
-        }
-    });
-    
-    // Rotate backgrounds every 3 seconds
-    setInterval(() => {
-        backgrounds[current].classList.remove('active');
-        current = (current + 1) % backgrounds.length;
-        backgrounds[current].classList.add('active');
-    }, 3000);
+    setTimeout(() => {
+        typewriter.style.borderRight = 'none';
+    }, 3500);
 }
 
-// Button hover effect with jQuery
-$(document).ready(function() {
-    $('.hero-btn').hover(
-        function() {
-            $(this).addClass('animate-bounce');
-        },
-        function() {
-            $(this).removeClass('animate-bounce');
-        }
-    );
-    
-    // Button click effect
-    $('.hero-btn').click(function() {
-        $(this).addClass('transform scale-95');
-        setTimeout(() => {
-            $(this).removeClass('transform scale-95');
-           
-        }, 200);
-    });
-});
-
-// Initialize everything when page loads
-window.addEventListener('load', () => {
-    createParticles();
-    rotateBackgrounds();
-    
-    // Typewriter effect for additional text if needed
-    setTimeout(() => {
-        document.querySelector('.typewriter').style.borderRight = 'none';
-    }, 3500);
-});
-
-
-  // Simple animation on scroll
-  document.addEventListener('DOMContentLoaded', function() {
+// Animation for vision and implementation items on scroll
+function initScrollAnimations() {
     const items = document.querySelectorAll('.vision-item, .implementation-item');
+    if (items.length === 0) return;
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -212,17 +185,26 @@ window.addEventListener('load', () => {
         item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(item);
     });
-});
+}
 
-
-document.addEventListener('DOMContentLoaded', function() {
+// Central Dars section functionality
+function initCentralDars() {
+    const centralDarsSection = document.querySelector('.central-dars-section');
+    if (!centralDarsSection) return;
+    
     // Create wires between central hub and posts
     function createWires() {
         const centralHub = document.querySelector('.central-hub');
         const posts = document.querySelectorAll('.post-card');
+        
+        if (!centralHub || posts.length === 0) return;
+        
         const hubRect = centralHub.getBoundingClientRect();
         const hubCenterX = hubRect.left + hubRect.width / 2;
         const hubCenterY = hubRect.top + hubRect.height / 2;
+        
+        // Remove existing wires
+        document.querySelectorAll('.wire').forEach(wire => wire.remove());
         
         posts.forEach(post => {
             const postRect = post.getBoundingClientRect();
@@ -243,13 +225,15 @@ document.addEventListener('DOMContentLoaded', function() {
             wire.style.left = hubCenterX + 'px';
             wire.style.transform = `rotate(${angle}deg)`;
             
-            document.querySelector('.central-dars-section').appendChild(wire);
+            centralDarsSection.appendChild(wire);
         });
     }
     
     // Animate posts on scroll
     function animateOnScroll() {
         const posts = document.querySelectorAll('.post-card');
+        if (posts.length === 0) return;
+        
         const options = {
             threshold: 0.5,
             rootMargin: '0px 0px -100px 0px'
@@ -275,47 +259,74 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
     
     // Recalculate wires on window resize
-    window.addEventListener('resize', function() {
-        // Remove existing wires
-        document.querySelectorAll('.wire').forEach(wire => wire.remove());
-        // Create new wires
-        createWires();
-    });
-});
+    window.addEventListener('resize', createWires);
+}
 
-
-$(document).ready(function() {
-    // Initialize carousel with custom interval
-    $('#motivationCarousel').carousel({
-        interval: 5000,
-        pause: 'hover'
-    });
+// Carousel initialization
+function initCarousel() {
+    const carousel = document.getElementById('motivationCarousel');
+    if (!carousel) return;
     
-    // Handle feedback form submission
-    $('#feedbackForm').on('submit', function(e) {
+    // Initialize with jQuery if available
+    if (typeof $ !== 'undefined' && $.fn.carousel) {
+        $('#motivationCarousel').carousel({
+            interval: 5000,
+            pause: 'hover'
+        });
+        
+        // Add hover effect to carousel controls
+        $('.carousel-control-prev, .carousel-control-next').hover(
+            function() {
+                $(this).css('background', 'rgba(255, 255, 255, 0.5)');
+            },
+            function() {
+                $(this).css('background', 'rgba(255, 255, 255, 0.3)');
+            }
+        );
+    }
+}
+
+// Feedback form handling
+function initFeedbackForm() {
+    const feedbackForm = document.getElementById('feedbackForm');
+    if (!feedbackForm) return;
+    
+    feedbackForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Simple validation
-        const name = $('#name').val().trim();
-        const email = $('#email').val().trim();
-        const feedback = $('#feedback').val().trim();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const feedback = document.getElementById('feedback').value.trim();
         
         if (name && email && feedback) {
             // Here you would typically send the data to a server
             alert('Thank you for your feedback! We appreciate your thoughts.');
-            $('#feedbackForm')[0].reset();
+            feedbackForm.reset();
         } else {
             alert('Please fill in all fields before submitting.');
         }
     });
-    
-    // Add hover effect to carousel controls
-    $('.carousel-control-prev, .carousel-control-next').hover(
-        function() {
-            $(this).css('background', 'rgba(255, 255, 255, 0.5)');
-        },
-        function() {
-            $(this).css('background', 'rgba(255, 255, 255, 0.3)');
-        }
-    );
-});
+}
+
+// Button hover effect with jQuery if available
+if (typeof $ !== 'undefined') {
+    $(document).ready(function() {
+        $('.hero-btn').hover(
+            function() {
+                $(this).addClass('animate-bounce');
+            },
+            function() {
+                $(this).removeClass('animate-bounce');
+            }
+        );
+        
+        // Button click effect
+        $('.hero-btn').click(function() {
+            $(this).addClass('transform scale-95');
+            setTimeout(() => {
+                $(this).removeClass('transform scale-95');
+            }, 200);
+        });
+    });
+}

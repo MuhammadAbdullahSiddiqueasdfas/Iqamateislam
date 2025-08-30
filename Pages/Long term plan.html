@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Term Plan with Animated Navigation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="../Style/Long term plan.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <!-- Laser Effects -->
+        <div class="nav-laser" style="top: 30%; width: 80%;"></div>
+        <div class="nav-laser" style="top: 70%; width: 70%; animation-delay: 1.5s;"></div>
+        
+        <!-- Shining dots -->
+        <div class="nav-shine" style="top: 20%; left: 20%; animation-delay: 0.5s;"></div>
+        <div class="nav-shine" style="top: 40%; left: 80%; animation-delay: 1s;"></div>
+        <div class="nav-shine" style="top: 60%; left: 30%; animation-delay: 1.5s;"></div>
+        <div class="nav-shine" style="top: 80%; left: 70%; animation-delay: 2s;"></div>
+        
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/60" alt="Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-main">Iqamat e Islam</div>
+                    <div class="logo-sub">The way to success</div>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="../index.html">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Dars_intro.html">
+                        <i class="fas fa-book-open nav-icon"></i>
+                        <span class="nav-text">Dars Introduction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Area_cover.html">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span class="nav-text">Areas Covered</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Department.html">
+                        <i class="fas fa-users nav-icon"></i>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Research & Dev.html">
+                        <i class="fas fa-handshake nav-icon"></i>
+                        <span class="nav-text">Research & Dev</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="../Pages/Long term plan.html">
+                        <i class="fas fa-chart-line nav-icon"></i>
+                        <span class="nav-text">Long Term Plan</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+    
+    <!-- Long Term Plan Section -->
+    <section class="plan-section" id="long-term"  >
+        <div class="plan-container">
+            <h2 class="section-title">Long Term Plan</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3 class="timeline-title">Expansion to 5 New Cities</h3>
+                        <p class="timeline-desc">Establish new branches in 5 major cities to spread Islamic knowledge and provide community services.</p>
+                        <div class="timeline-icon">
+                            <i class="fas fa-city"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024</div>
+                        <h3 class="timeline-title">Digital Platform Launch</h3>
+                        <p class="timeline-desc">Develop a comprehensive digital platform for online learning, research dissemination, and community engagement.</p>
+                        <div class="timeline-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2025</div>
+                        <h3 class="timeline-title">International Research Conference</h3>
+                        <p class="timeline-desc">Host an international conference bringing together Islamic scholars and researchers from around the world.</p>
+                        <div class="timeline-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2026</div>
+                        <h3 class="timeline-title">Quran Translation Project</h3>
+                        <p class="timeline-desc">Complete translation of the Quran into 3 additional languages with detailed commentary and contextual explanations.</p>
+                        <div class="timeline-icon">
+                            <i class="fas fa-book-quran"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2027</div>
+                        <h3 class="timeline-title">Educational Institute Establishment</h3>
+                        <p class="timeline-desc">Establish a formal educational institute offering certified courses in Islamic studies and research methodology.</p>
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../JS/Long term plan.js"></script>
+</body>
+</html>

@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Departments - Iqamat e Islam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f5e6;
+            color: #2c3e50;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        #navbar {
+            background: linear-gradient(135deg, #80760d 0%, #0a5c36 100%);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(13, 128, 67, 0.6);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            border-bottom: 2px solid #37d1d4;
+            height: 90px;
+        }
+
+        #navbar.scrolled {
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            background: rgba(10, 92, 54, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            z-index: 1001;
+        }
+
+        .logo-img {
+            height: 60px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            border: 2px solid #37d1d4;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            filter: brightness(1.2);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-main {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .logo-main::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #37d1d4;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .logo-container:hover .logo-main::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .logo-sub {
+            font-size: 0.9rem;
+            color: #37d1d4;
+            font-style: italic;
+            letter-spacing: 1px;
+            margin-top: 3px;
+            transition: all 0.3s ease;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1002;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        ul.nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.nav-links li {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        ul.nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 12px 16px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        ul.nav-links li a .nav-icon {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            opacity: 0.9;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+
+        ul.nav-links li a:hover .nav-icon {
+            transform: translateY(-8px) scale(1.1);
+            opacity: 1;
+            color: #37d1d4;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+
+        ul.nav-links li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255,255,255,0.15), 
+                transparent);
+            transform: translateX(-150%) skewX(25deg);
+            transition: transform 0.6s ease;
+        }
+
+        ul.nav-links li a:hover::before {
+            transform: translateX(150%) skewX(25deg);
+        }
+
+        ul.nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #37d1d4;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border-radius: 0 0 8px 8px;
+        }
+
+        ul.nav-links li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Laser Effects for Nav */
+        .nav-laser {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #37d1d4, transparent);
+            box-shadow: 0 0 10px #37d1d4, 0 0 20px #37d1d4;
+            animation: laserMove 3s infinite linear;
+            z-index: 4;
+            top: 0;
+        }
+
+        @keyframes laserMove {
+            0% {
+                left: -100%;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Shining dots for Nav */
+        .nav-shine {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #37d1d4;
+            border-radius: 50%;
+            box-shadow: 0 0 20px 8px #37d1d4;
+            opacity: 0;
+            z-index: 2;
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            padding-top: 90px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 92, 54, 0.8), rgba(128, 118, 13, 0.8));
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            color: white;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Departments Section */
+        .departments-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #0a5c36;
+            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #0a5c36, #37d1d4);
+            margin: 15px auto;
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(55, 209, 212, 0.5);
+        }
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dept-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(10, 92, 54, 0.15);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(10, 92, 54, 0.1);
+        }
+
+        .dept-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #0a5c36, #37d1d4, #80760d);
+        }
+
+        .dept-icon {
+            font-size: 3rem;
+            color: #0a5c36;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            background: rgba(10, 92, 54, 0.1);
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 92, 54, 0.4);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(10, 92, 54, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(10, 92, 54, 0);
+            }
+        }
+
+        .dept-card-title {
+            font-size: 1.5rem;
+            color: #0a5c36;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .dept-card-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Digital Notes Section */
+        .digital-notes-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
+            color: white;
+            position: relative;
+        }
+
+        .notes-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .notes-content {
+            padding-right: 2rem;
+        }
+
+        .notes-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .notes-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .notes-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .features-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .features-list li i {
+            color: #37d1d4;
+            font-size: 1.2rem;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Research Infrastructure Section */
+        .research-infra-section {
+            padding: 5rem 2rem;
+            background: #f8f5e6;
+        }
+
+        .infra-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .infra-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(10, 92, 54, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .infra-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(10, 92, 54, 0.25);
+        }
+
+        .infra-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .infra-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .infra-card:hover .infra-image img {
+            transform: scale(1.1);
+        }
+
+        .infra-content {
+            padding: 1.5rem;
+        }
+
+        .infra-title {
+            font-size: 1.3rem;
+            color: #0a5c36;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .infra-desc {
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            ul.nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
+                flex-direction: column;
+                padding-top: 90px;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                gap: 0;
+            }
+            
+            ul.nav-links.active {
+                right: 0;
+            }
+            
+            ul.nav-links li {
+                width: 100%;
+            }
+            
+            ul.nav-links li a {
+                padding: 20px;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 15px;
+                border-radius: 0;
+            }
+            
+            ul.nav-links li a .nav-text {
+                font-size: 1.1rem;
+            }
+
+            .notes-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .notes-content {
+                padding-right: 0;
+                order: 2;
+            }
+
+            .notes-image {
+                order: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #navbar {
+                padding: 1.2rem;
+                height: 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .dept-card, .infra-card {
+                padding: 1.5rem;
+            }
+            
+            .dept-icon {
+                width: 70px;
+                height: 70px;
+                line-height: 70px;
+                font-size: 2.5rem;
+            }
+            
+            .logo-main {
+                font-size: 1.5rem;
+            }
+            
+            .logo-img {
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <!-- Laser Effects -->
+        <div class="nav-laser" style="top: 30%; width: 80%;"></div>
+        <div class="nav-laser" style="top: 70%; width: 70%; animation-delay: 1.5s;"></div>
+        
+        <!-- Shining dots -->
+        <div class="nav-shine" style="top: 20%; left: 20%; animation-delay: 0.5s;"></div>
+        <div class="nav-shine" style="top: 40%; left: 80%; animation-delay: 1s;"></div>
+        <div class="nav-shine" style="top: 60%; left: 30%; animation-delay: 1.5s;"></div>
+        <div class="nav-shine" style="top: 80%; left: 70%; animation-delay: 2s;"></div>
+        
+        <div class="nav-container">
+            <div class="logo-container">
+                <img src="https://via.placeholder.com/60" alt="Logo" class="logo-img">
+                <div class="logo-text">
+                    <div class="logo-main">Iqamat e Islam</div>
+                    <div class="logo-sub">The way to success</div>
+                </div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="../index.html">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span class="nav-text">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Dars_intro.html">
+                        <i class="fas fa-book-open nav-icon"></i>
+                        <span class="nav-text">Dars Introduction</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Area_cover.html">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span class="nav-text">Areas Covered</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Department.html">
+                        <i class="fas fa-users nav-icon"></i>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../Pages/Research & Dev.html">
+                        <i class="fas fa-handshake nav-icon"></i>
+                        <span class="nav-text">Research & Dev</span>
+                    </a>
+                </li>
+               
+                <li>
+                    <a href="../Pages/Long term plan.html">
+                        <i class="fas fa-chart-line nav-icon"></i>
+                        <span class="nav-text">Long Term Plan</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">Research & Departments</h1>
+            <p class="hero-subtitle">
+                Our dedicated departments work collaboratively to advance Islamic knowledge, 
+                provide comprehensive research, and develop innovative solutions for the community.
+            </p>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments-section">
+        <h2 class="section-title">Our Departments</h2>
+        
+        <div class="dept-grid">
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3 class="dept-card-title">Research Department</h3>
+                <p class="dept-card-text">
+                    Conducting in-depth studies on Islamic principles and contemporary issues. 
+                    We analyze findings and produce comprehensive documentation.
+                </p>
+            </div>
+            
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3 class="dept-card-title">Documentation</h3>
+                <p class="dept-card-text">
+                    Meticulously documenting research findings to create comprehensive resources 
+                    that benefit the community.
+                </p>
+            </div>
+            
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="dept-card-title">Student Association</h3>
+                <p class="dept-card-text">
+                    Connecting students with Islamic teachings and providing support for their 
+                    educational and spiritual journey.
+                </p>
+            </div>
+            
+            <div class="dept-card">
+                <div class="dept-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3 class="dept-card-title">HR Department</h3>
+                <p class="dept-card-text">
+                    Managing human resources and ensuring smooth operations across all 
+                    departments and initiatives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Notes Section -->
+    <section class="digital-notes-section">
+        <div class="notes-container">
+            <div class="notes-content">
+                <h2 class="section-title" style="color: white;">Digital Transformation</h2>
+                <p>
+                    We're revolutionizing how students engage with Islamic teachings through our 
+                    new digital notes application. Moving beyond traditional diaries, this app 
+                    will provide an enhanced learning experience with modern features.
+                </p>
+                
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Cloud synchronization across all devices</li>
+                    <li><i class="fas fa-check"></i> Searchable Islamic knowledge database</li>
+                    <li><i class="fas fa-check"></i> Audio notes and lecture recordings</li>
+                    <li><i class="fas fa-check"></i> Collaborative study groups</li>
+                    <li><i class="fas fa-check"></i> Reminders for prayer times and lessons</li>
+                    <li><i class="fas fa-check"></i> Quranic verse integration and referencing</li>
+                </ul>
+            </div>
+            
+            <div class="notes-image">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Notes App">
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Infrastructure Section -->
+    <section class="research-infra-section">
+        <div class="infra-container">
+            <h2 class="section-title">Research Infrastructure</h2>
+            
+            <div class="infra-grid">
+                <div class="infra-card">
+                    <div class="infra-image">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Research Lab">
+                    </div>
+                    <div class="infra-content">
+                        <h3 class="infra-title">Advanced Research Facilities</h3>
+                        <p class="infra-desc">
+                            Our research centers are equipped with the latest technology to facilitate 
+                            in-depth study of Islamic texts and contemporary applications.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="infra-card">
+                    <div class="infra-image">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Collaboration">
+                    </div>
+                    <div class="infra-content">
+                        <h3 class="infra-title">Collaborative Environment</h3>
+                        <p class="infra-desc">
+                            We foster a collaborative research environment where scholars and students 
+                            work together to advance Islamic knowledge.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="infra-card">
+                    <div class="infra-image">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Library">
+                    </div>
+                    <div class="infra-content">
+                        <h3 class="infra-title">Digital Library Resources</h3>
+                        <p class="infra-desc">
+                            Our extensive digital library provides access to thousands of Islamic texts, 
+                            research papers, and historical documents.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.getElementById('navLinks');
+            const navOverlay = document.getElementById('navOverlay');
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', function() {
+                menuToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                navOverlay.classList.toggle('active');
+            });
+            
+            // Close menu when clicking overlay
+            navOverlay.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

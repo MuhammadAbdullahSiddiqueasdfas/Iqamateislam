@@ -1,0 +1,1046 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f5e6;
+    color: #2c3e50;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+#navbar {
+    background: linear-gradient(135deg, #80760d 0%, #0a5c36 100%);
+    padding: 1.5rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(13, 128, 67, 0.6);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    border-bottom: 2px solid #37d1d4;
+    height: 90px;
+}
+
+#navbar.scrolled {
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+    background: rgba(10, 92, 54, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    z-index: 1001;
+}
+
+.logo-img {
+    height: 60px;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    border: 2px solid #37d1d4;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    filter: brightness(1.2);
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+}
+
+.logo-main {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.logo-main::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #37d1d4;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease;
+}
+
+.logo-container:hover .logo-main::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.logo-sub {
+    font-size: 0.9rem;
+    color: #37d1d4;
+    font-style: italic;
+    letter-spacing: 1px;
+    margin-top: 3px;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1002;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: white;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+ul.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+ul.nav-links li {
+    position: relative;
+    perspective: 1000px;
+}
+
+ul.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 12px 16px;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+ul.nav-links li a .nav-icon {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    opacity: 0.9;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+ul.nav-links li a:hover .nav-icon {
+    transform: translateY(-8px) scale(1.1);
+    opacity: 1;
+    color: #37d1d4;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+}
+
+ul.nav-links li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.15), 
+        transparent);
+    transform: translateX(-150%) skewX(25deg);
+    transition: transform 0.6s ease;
+}
+
+ul.nav-links li a:hover::before {
+    transform: translateX(150%) skewX(25deg);
+}
+
+ul.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #37d1d4;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 0 0 8px 8px;
+}
+
+ul.nav-links li a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Research Department Section */
+.research-section {
+    min-height: 100vh;
+    padding-top: 90px;
+    position: relative;
+    overflow: hidden;
+}
+
+.bg-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.bg-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.bg-slide.active {
+    opacity: 1;
+}
+
+.research-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    z-index: 2;
+}
+
+.research-content {
+    position: relative;
+    z-index: 3;
+    padding: 4rem 2rem;
+    color: white;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.research-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    position: relative;
+    display: inline-block;
+}
+
+.research-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: #37d1d4;
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(55, 209, 212, 0.7);
+}
+
+.research-description {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.8;
+}
+
+/* Laser Effect */
+.laser-effect {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #37d1d4, transparent);
+    box-shadow: 0 0 10px #37d1d4, 0 0 20px #37d1d4;
+    animation: laserMove 3s infinite linear;
+    z-index: 4;
+}
+
+@keyframes laserMove {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* Shining effects */
+.shining-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #37d1d4;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 8px #37d1d4;
+    opacity: 0;
+    z-index: 2;
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+}
+
+.doc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(10, 92, 54, 0.4);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.doc-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #80760d 0%, #0a5c36 100%);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.doc-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(10, 92, 54, 0.6);
+}
+
+.doc-btn:hover::before {
+    opacity: 1;
+}
+
+/* Documentation Section */
+.documentation-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 5rem 2rem;
+    position: relative;
+}
+
+.doc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #0a5c36;
+    font-size: 2.8rem;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #0a5c36, #37d1d4);
+    margin: 15px auto;
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(55, 209, 212, 0.5);
+}
+
+.doc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.doc-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(10, 92, 54, 0.15);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(10, 92, 54, 0.1);
+}
+
+.doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #0a5c36, #37d1d4, #80760d);
+}
+
+.doc-icon {
+    font-size: 3rem;
+    color: #0a5c36;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    background: rgba(10, 92, 54, 0.1);
+    position: relative;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(10, 92, 54, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(10, 92, 54, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(10, 92, 54, 0);
+    }
+}
+
+.doc-card-title {
+    font-size: 1.5rem;
+    color: #0a5c36;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.doc-card-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+/* Stats Section */
+.stats-section {
+    background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
+    padding: 5rem 2rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #37d1d4;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.stat-label {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Video Section */
+.video-section {
+    padding: 5rem 2rem;
+    background: #f8f5e6;
+}
+
+.video-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(10, 92, 54, 0.3);
+}
+
+.video-responsive-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Quranic Connections Section */
+.quranic-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(10, 92, 54, 0.15);
+    overflow: hidden;
+    padding: 30px;
+}
+
+.quranic-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #0a5c36 0%, #2d8519 100%);
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+}
+
+.quranic-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><text x="50%" y="50%" font-size="60" text-anchor="middle" dominant-baseline="middle" font-family="Amiri">ٱ</text></svg>');
+    background-repeat: repeat;
+    opacity: 0.15;
+}
+
+.quranic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.quranic-subtitle {
+    font-size: 1.4rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.quranic-icon {
+    font-size: 3rem;
+    margin-top: 25px;
+    color: #d4af37;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Timeline Styles */
+.quranic-timeline {
+    position: relative;
+    padding: 50px 0;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.quranic-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(to bottom, #0a5c36, #80760d, #0a5c36);
+    margin-left: -3px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(10, 92, 54, 0.5);
+}
+
+.quranic-event {
+    position: relative;
+    margin-bottom: 70px;
+    width: 45%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.quranic-event.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quranic-event-left {
+    left: 0;
+}
+
+.quranic-event-right {
+    left: 55%;
+}
+
+.quranic-event-content {
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: all 0.3s ease;
+    border-top: 5px solid #0a5c36;
+}
+
+.quranic-event-right .quranic-event-content {
+    border-top-color: #80760d;
+}
+
+.quranic-event-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.quranic-event-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: #0a5c36;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quranic-event-desc {
+    line-height: 1.7;
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.quranic-verse {
+    padding: 20px;
+    background: rgba(10, 92, 54, 0.08);
+    border-radius: 10px;
+    font-style: italic;
+    border-right: 4px solid #0a5c36;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: #0a5c36;
+    text-align: right;
+    direction: rtl;
+}
+
+.quranic-verse-ref {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #80760d;
+    font-style: normal;
+    font-family: 'Poppins', sans-serif;
+}
+
+.quranic-event-icon {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background: #0a5c36;
+    border: 5px solid #f8f5e6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: -35px;
+    top: 20px;
+    z-index: 2;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.quranic-event-right .quranic-event-icon {
+    left: -35px;
+    right: auto;
+    background: #80760d;
+}
+
+/* Decorative Elements */
+.quranic-decoration {
+    position: absolute;
+    font-size: 180px;
+    opacity: 0.03;
+    color: #0a5c36;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.decoration-1 {
+    top: 50px;
+    left: 5%;
+    transform: rotate(-25deg);
+}
+
+.decoration-2 {
+    bottom: 100px;
+    right: 5%;
+    transform: rotate(15deg);
+}
+
+.quranic-footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 30px;
+    color: #2c3e50;
+    font-size: 1rem;
+    border-top: 1px solid rgba(10, 92, 54, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .research-title {
+        font-size: 3.5rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+    
+    .quranic-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    ul.nav-links {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
+        flex-direction: column;
+        padding-top: 90px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        gap: 0;
+    }
+    
+    ul.nav-links.active {
+        right: 0;
+    }
+    
+    ul.nav-links li {
+        width: 100%;
+    }
+    
+    ul.nav-links li a {
+        padding: 20px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 15px;
+        border-radius: 0;
+    }
+    
+    ul.nav-links li a .nav-text {
+        font-size: 1.1rem;
+    }
+    
+    .quranic-timeline::before {
+        left: 30px;
+    }
+    
+    .quranic-event {
+        width: 85%;
+        left: 15% !important;
+        padding-left: 50px;
+    }
+    
+    .quranic-event-icon {
+        left: -35px !important;
+        right: auto !important;
+    }
+    
+    .quranic-title {
+        font-size: 3rem;
+    }
+    
+    .quranic-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .research-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        padding: 1.2rem;
+        height: 80px;
+    }
+    
+    .research-title {
+        font-size: 2.8rem;
+    }
+    
+    .research-description {
+        font-size: 1.1rem;
+    }
+    
+    .doc-grid, .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .quranic-title {
+        font-size: 2.5rem;
+    }
+    
+    .quranic-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .quranic-event {
+        width: 95%;
+        left: 5% !important;
+    }
+    
+    .quranic-event-title {
+        font-size: 1.8rem;
+    }
+    
+    .quranic-event-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .quranic-verse {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-img {
+        height: 50px;
+    }
+    
+    .logo-main {
+        font-size: 1.5rem;
+    }
+    
+    .research-title {
+        font-size: 2.2rem;
+    }
+    
+    .research-description {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .doc-card, .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .doc-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 2.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.2rem;
+    }
+    
+    .video-section, .documentation-section, .stats-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .quranic-container {
+        padding: 20px;
+        margin: 20px;
+    }
+    
+    .quranic-title {
+        font-size: 2rem;
+    }
+    
+    .quranic-header {
+        padding: 30px 15px;
+    }
+    
+    .quranic-event-content {
+        padding: 20px;
+    }
+    
+    .quranic-event-title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+.quranic-footer {
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 30px;
+    color: #2c3e50;
+    font-size: 1rem;
+    border-top: 1px solid rgba(10, 92, 54, 0.2);
+}
+
+#l{
+ 
+color: rgb(255, 255, 255);
+
+}
