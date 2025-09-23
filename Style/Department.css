@@ -4,35 +4,45 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary: #1a1a1a;           /* Dark gray for main backgrounds */
+    --secondary: #2a2a2a;         /* Slightly lighter gray for gradients */
+    --accent: #d4af37;            /* Gold for headings, buttons, and highlights */
+    --dark-gold: #bfa130;         /* Slightly darker gold for hover effects */
+    --text-light: #ffffff;        /* White for readability */
+    --text-dark: #000000;         /* Black for optional use */
+    --glow: 0 0 12px rgba(212, 175, 55, 0.6); /* Gold glow for hover effects */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f5e6;
-    color: #2c3e50;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary)); /* Dark to lighter gray gradient */
+    color: var(--text-light); /* White text */
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 /* Navigation */
 #navbar {
-    background: linear-gradient(135deg, #80760d 0%, #0a5c36 100%);
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Dark to lighter gray gradient */
     padding: 1.5rem 2rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 0 20px rgba(13, 128, 67, 0.6);
+    box-shadow: var(--glow); /* Gold glow */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
     align-items: center;
     backdrop-filter: blur(5px);
-    border-bottom: 2px solid #37d1d4;
+    border-bottom: 2px solid var(--accent); /* Gold border */
     height: 90px;
 }
 
 #navbar.scrolled {
     padding: 1rem 2rem;
-    box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-    background: rgba(10, 92, 54, 0.95);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(26, 26, 26, 0.95); /* Semi-transparent dark gray */
     backdrop-filter: blur(10px);
 }
 
@@ -59,12 +69,12 @@ body {
     height: 60px;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     padding: 8px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(212, 175, 55, 0.1); /* Subtle gold background */
     border-radius: 50%;
     backdrop-filter: blur(5px);
-    border: 2px solid #37d1d4;
+    border: 2px solid var(--accent); /* Gold border */
     z-index: 2;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     filter: brightness(1.2);
 }
 
@@ -78,9 +88,9 @@ body {
 .logo-main {
     font-size: 2rem;
     font-weight: 700;
-    color: white;
+    color: var(--text-light); /* White text */
     line-height: 1.2;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
     position: relative;
 }
@@ -92,7 +102,7 @@ body {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #37d1d4;
+    background: var(--accent); /* Gold line */
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s ease;
@@ -105,12 +115,12 @@ body {
 
 .logo-sub {
     font-size: 0.9rem;
-    color: #37d1d4;
+    color: var(--text-light); /* White text */
     font-style: italic;
     letter-spacing: 1px;
     margin-top: 3px;
     transition: all 0.3s ease;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .menu-toggle {
@@ -126,7 +136,7 @@ body {
 .menu-toggle span {
     width: 30px;
     height: 3px;
-    background: white;
+    background: var(--text-light); /* White */
     margin: 3px 0;
     transition: all 0.3s ease;
     border-radius: 2px;
@@ -146,7 +156,7 @@ ul.nav-links li {
 }
 
 ul.nav-links li a {
-    color: white;
+    color: var(--text-light); /* White text */
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -168,14 +178,15 @@ ul.nav-links li a .nav-icon {
     transition: all 0.4s ease;
     position: relative;
     z-index: 2;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    color: var(--accent); /* Gold icons */
 }
 
 ul.nav-links li a:hover .nav-icon {
     transform: translateY(-8px) scale(1.1);
     opacity: 1;
-    color: #37d1d4;
-    text-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+    color: var(--dark-gold); /* Darker gold */
+    text-shadow: var(--glow); /* Gold glow */
 }
 
 ul.nav-links li a::before {
@@ -185,10 +196,7 @@ ul.nav-links li a::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255,255,255,0.15), 
-        transparent);
+    background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent); /* Gold gradient */
     transform: translateX(-150%) skewX(25deg);
     transition: transform 0.6s ease;
 }
@@ -204,7 +212,7 @@ ul.nav-links li a::after {
     left: 0;
     width: 100%;
     height: 3px;
-    background: #37d1d4;
+    background: var(--accent); /* Gold line */
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -214,7 +222,7 @@ ul.nav-links li a::after {
 ul.nav-links li a:hover::after {
     transform: scaleX(1);
     transform-origin: left;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .overlay {
@@ -241,6 +249,7 @@ ul.nav-links li a:hover::after {
     padding-top: 90px;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary)); /* Dark to lighter gray gradient */
 }
 
 .bg-slideshow {
@@ -272,7 +281,7 @@ ul.nav-links li a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
     z-index: 2;
 }
 
@@ -280,7 +289,7 @@ ul.nav-links li a:hover::after {
     position: relative;
     z-index: 3;
     padding: 4rem 2rem;
-    color: white;
+    color: var(--text-light); /* White text */
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
@@ -291,9 +300,10 @@ ul.nav-links li a:hover::after {
     font-family: 'Playfair Display', serif;
     font-size: 4rem;
     margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
     position: relative;
     display: inline-block;
+    color: var(--accent); /* Gold heading */
 }
 
 .research-title::after {
@@ -304,9 +314,9 @@ ul.nav-links li a:hover::after {
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background: #37d1d4;
+    background: var(--accent); /* Gold line */
     border-radius: 2px;
-    box-shadow: 0 0 15px rgba(55, 209, 212, 0.7);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .research-description {
@@ -314,14 +324,15 @@ ul.nav-links li a:hover::after {
     max-width: 800px;
     margin: 0 auto 3rem;
     line-height: 1.8;
+    color: var(--text-light); /* White text */
 }
 
 /* Laser Effect */
 .laser-effect {
     position: absolute;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #37d1d4, transparent);
-    box-shadow: 0 0 10px #37d1d4, 0 0 20px #37d1d4;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent); /* Gold gradient */
+    box-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent); /* Gold shadow */
     animation: laserMove 3s infinite linear;
     z-index: 4;
 }
@@ -348,9 +359,9 @@ ul.nav-links li a:hover::after {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: #37d1d4;
+    background: var(--accent); /* Gold */
     border-radius: 50%;
-    box-shadow: 0 0 20px 8px #37d1d4;
+    box-shadow: 0 0 20px 8px var(--accent); /* Gold glow */
     opacity: 0;
     z-index: 2;
     animation: shine 4s infinite;
@@ -376,15 +387,15 @@ ul.nav-links li a:hover::after {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
-    color: white;
+    background: var(--accent); /* Gold button */
+    color: var(--text-light); /* White text */
     padding: 0.8rem 1.5rem;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(10, 92, 54, 0.4);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4); /* Gold shadow */
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -397,7 +408,7 @@ ul.nav-links li a:hover::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #80760d 0%, #0a5c36 100%);
+    background: var(--dark-gold); /* Darker gold hover */
     z-index: -1;
     transition: opacity 0.3s ease;
     opacity: 0;
@@ -405,7 +416,7 @@ ul.nav-links li a:hover::after {
 
 .doc-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(10, 92, 54, 0.6);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .doc-btn:hover::before {
@@ -414,7 +425,7 @@ ul.nav-links li a:hover::after {
 
 /* Documentation Section */
 .documentation-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    background: linear-gradient(135deg, var(--secondary), var(--primary)); /* Dark to lighter gray gradient */
     padding: 5rem 2rem;
     position: relative;
 }
@@ -427,7 +438,7 @@ ul.nav-links li a:hover::after {
 .section-title {
     text-align: center;
     margin-bottom: 3rem;
-    color: #0a5c36;
+    color: var(--accent); /* Gold heading */
     font-size: 2.8rem;
     font-family: 'Playfair Display', serif;
     position: relative;
@@ -438,10 +449,10 @@ ul.nav-links li a:hover::after {
     display: block;
     width: 100px;
     height: 4px;
-    background: linear-gradient(to right, #0a5c36, #37d1d4);
+    background: var(--accent); /* Gold line */
     margin: 15px auto;
     border-radius: 2px;
-    box-shadow: 0 0 15px rgba(55, 209, 212, 0.5);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .doc-grid {
@@ -452,15 +463,15 @@ ul.nav-links li a:hover::after {
 }
 
 .doc-card {
-    background: white;
+    background: var(--secondary); /* Lighter gray */
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: 0 10px 30px rgba(10, 92, 54, 0.15);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(10, 92, 54, 0.1);
+    border: 1px solid var(--accent); /* Gold border */
 }
 
 .doc-card::before {
@@ -470,41 +481,42 @@ ul.nav-links li a:hover::after {
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(to right, #0a5c36, #37d1d4, #80760d);
+    background: var(--accent); /* Gold line */
 }
 
 .doc-icon {
     font-size: 3rem;
-    color: #0a5c36;
+    color: var(--accent); /* Gold icon */
     margin-bottom: 1.5rem;
     display: inline-block;
     width: 80px;
     height: 80px;
     line-height: 80px;
     border-radius: 50%;
-    background: rgba(10, 92, 54, 0.1);
+    background: rgba(212, 175, 55, 0.1); /* Subtle gold background */
     position: relative;
     animation: pulse 2s infinite;
+    border: 1px solid var(--accent); /* Gold stroke */
 }
 
 @keyframes pulse {
     0% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(10, 92, 54, 0.4);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
     }
     70% {
         transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(10, 92, 54, 0);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(10, 92, 54, 0);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
     }
 }
 
 .doc-card-title {
     font-size: 1.5rem;
-    color: #0a5c36;
+    color: var(--accent); /* Gold heading */
     margin-bottom: 1rem;
     font-family: 'Playfair Display', serif;
 }
@@ -512,15 +524,15 @@ ul.nav-links li a:hover::after {
 .doc-card-text {
     font-size: 1.05rem;
     line-height: 1.6;
-    color: #2c3e50;
+    color: var(--text-light); /* White text */
     margin-bottom: 1.5rem;
 }
 
 /* Stats Section */
 .stats-section {
-    background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Dark to lighter gray gradient */
     padding: 5rem 2rem;
-    color: white;
+    color: var(--text-light); /* White text */
     position: relative;
     overflow: hidden;
 }
@@ -540,12 +552,12 @@ ul.nav-links li a:hover::after {
 }
 
 .stat-card {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(212, 175, 55, 0.1); /* Subtle gold background */
     border-radius: 15px;
     padding: 2rem;
     text-align: center;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--accent); /* Gold border */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -553,13 +565,13 @@ ul.nav-links li a:hover::after {
 
 .stat-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .stat-icon {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    color: #37d1d4;
+    color: var(--accent); /* Gold icon */
 }
 
 .stat-number {
@@ -567,17 +579,19 @@ ul.nav-links li a:hover::after {
     font-weight: 700;
     margin-bottom: 0.5rem;
     font-family: 'Playfair Display', serif;
+    color: var(--text-light); /* White text */
 }
 
 .stat-label {
     font-size: 1.2rem;
     opacity: 0.9;
+    color: var(--text-light); /* White text */
 }
 
 /* Video Section */
 .video-section {
     padding: 5rem 2rem;
-    background: #f8f5e6;
+    background: linear-gradient(to bottom, var(--secondary), var(--primary)); /* Dark to lighter gray gradient */
 }
 
 .video-container {
@@ -592,7 +606,8 @@ ul.nav-links li a:hover::after {
     height: 0;
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(10, 92, 54, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--accent); /* Gold border */
 }
 
 .video-responsive-container {
@@ -608,19 +623,20 @@ ul.nav-links li a:hover::after {
 .quranic-container {
     max-width: 1200px;
     margin: 40px auto;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--secondary); /* Lighter gray */
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(10, 92, 54, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     padding: 30px;
+    border: 1px solid var(--accent); /* Gold border */
 }
 
 .quranic-header {
     text-align: center;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #0a5c36 0%, #2d8519 100%);
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Dark to lighter gray gradient */
     border-radius: 15px;
-    color: white;
+    color: var(--text-light); /* White text */
     margin-bottom: 50px;
     position: relative;
     overflow: hidden;
@@ -644,6 +660,7 @@ ul.nav-links li a:hover::after {
     margin-bottom: 15px;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     position: relative;
+    color: var(--accent); /* Gold heading */
 }
 
 .quranic-subtitle {
@@ -652,12 +669,13 @@ ul.nav-links li a:hover::after {
     margin: 0 auto;
     opacity: 0.9;
     font-weight: 300;
+    color: var(--text-light); /* White text */
 }
 
 .quranic-icon {
     font-size: 3rem;
     margin-top: 25px;
-    color: #d4af37;
+    color: var(--accent); /* Gold icon */
     animation: float 3s ease-in-out infinite;
 }
 
@@ -682,10 +700,10 @@ ul.nav-links li a:hover::after {
     top: 0;
     bottom: 0;
     width: 6px;
-    background: linear-gradient(to bottom, #0a5c36, #80760d, #0a5c36);
+    background: var(--accent); /* Gold line */
     margin-left: -3px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(10, 92, 54, 0.5);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .quranic-event {
@@ -712,28 +730,29 @@ ul.nav-links li a:hover::after {
 
 .quranic-event-content {
     padding: 25px;
-    background: white;
+    background: var(--primary); /* Dark gray */
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     position: relative;
     transition: all 0.3s ease;
-    border-top: 5px solid #0a5c36;
+    border-top: 5px solid var(--accent); /* Gold border */
+    color: var(--text-light); /* White text */
 }
 
 .quranic-event-right .quranic-event-content {
-    border-top-color: #80760d;
+    border-top-color: var(--dark-gold); /* Darker gold */
 }
 
 .quranic-event-content:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .quranic-event-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     margin-bottom: 15px;
-    color: #0a5c36;
+    color: var(--accent); /* Gold heading */
     display: flex;
     align-items: center;
     gap: 15px;
@@ -741,21 +760,21 @@ ul.nav-links li a:hover::after {
 
 .quranic-event-desc {
     line-height: 1.7;
-    color: #2c3e50;
+    color: var(--text-light); /* White text */
     font-size: 1.1rem;
     margin-bottom: 20px;
 }
 
 .quranic-verse {
     padding: 20px;
-    background: rgba(10, 92, 54, 0.08);
+    background: rgba(212, 175, 55, 0.08); /* Subtle gold background */
     border-radius: 10px;
     font-style: italic;
-    border-right: 4px solid #0a5c36;
+    border-right: 4px solid var(--accent); /* Gold border */
     font-family: 'Playfair Display', serif;
     font-size: 1.3rem;
     line-height: 1.8;
-    color: #0a5c36;
+    color: var(--text-light); /* White text */
     text-align: right;
     direction: rtl;
 }
@@ -765,7 +784,7 @@ ul.nav-links li a:hover::after {
     text-align: left;
     margin-top: 15px;
     font-weight: 600;
-    color: #80760d;
+    color: var(--accent); /* Gold highlight */
     font-style: normal;
     font-family: 'Poppins', sans-serif;
 }
@@ -774,8 +793,8 @@ ul.nav-links li a:hover::after {
     position: absolute;
     width: 70px;
     height: 70px;
-    background: #0a5c36;
-    border: 5px solid #f8f5e6;
+    background: var(--accent); /* Gold */
+    border: 5px solid var(--text-light); /* White border */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -783,15 +802,15 @@ ul.nav-links li a:hover::after {
     right: -35px;
     top: 20px;
     z-index: 2;
-    color: white;
+    color: var(--text-light); /* White */
     font-size: 1.8rem;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--glow); /* Gold glow */
 }
 
 .quranic-event-right .quranic-event-icon {
     left: -35px;
     right: auto;
-    background: #80760d;
+    background: var(--dark-gold); /* Darker gold */
 }
 
 /* Decorative Elements */
@@ -799,7 +818,7 @@ ul.nav-links li a:hover::after {
     position: absolute;
     font-size: 180px;
     opacity: 0.03;
-    color: #0a5c36;
+    color: var(--accent); /* Gold */
     z-index: 0;
     pointer-events: none;
 }
@@ -820,9 +839,13 @@ ul.nav-links li a:hover::after {
     text-align: center;
     padding: 30px 0;
     margin-top: 30px;
-    color: #2c3e50;
+    color: var(--text-light); /* White text */
     font-size: 1rem;
-    border-top: 1px solid rgba(10, 92, 54, 0.2);
+    border-top: 1px solid var(--accent); /* Gold line */
+}
+
+/*l {
+    color: var(--text-light); /* White text */
 }
 
 /* Responsive Design */
@@ -830,13 +853,21 @@ ul.nav-links li a:hover::after {
     .research-title {
         font-size: 3.5rem;
     }
-    
+
     .section-title {
         font-size: 2.5rem;
     }
-    
+
     .quranic-title {
         font-size: 3.5rem;
+    }
+
+    .doc-grid, .stats-grid {
+        gap: 1.5rem;
+    }
+
+    .quranic-container {
+        padding: 25px;
     }
 }
 
@@ -844,29 +875,29 @@ ul.nav-links li a:hover::after {
     .menu-toggle {
         display: flex;
     }
-    
+
     ul.nav-links {
         position: fixed;
         top: 0;
         right: -300px;
         width: 300px;
         height: 100vh;
-        background: linear-gradient(135deg, #0a5c36 0%, #80760d 100%);
+        background: linear-gradient(135deg, var(--primary), var(--secondary)); /* Gray gradient */
         flex-direction: column;
         padding-top: 90px;
         transition: right 0.3s ease;
         z-index: 1000;
         gap: 0;
     }
-    
+
     ul.nav-links.active {
         right: 0;
     }
-    
+
     ul.nav-links li {
         width: 100%;
     }
-    
+
     ul.nav-links li a {
         padding: 20px;
         flex-direction: row;
@@ -874,40 +905,44 @@ ul.nav-links li a:hover::after {
         gap: 15px;
         border-radius: 0;
     }
-    
+
     ul.nav-links li a .nav-text {
         font-size: 1.1rem;
     }
-    
+
     .quranic-timeline::before {
         left: 30px;
     }
-    
+
     .quranic-event {
         width: 85%;
         left: 15% !important;
         padding-left: 50px;
     }
-    
+
     .quranic-event-icon {
         left: -35px !important;
         right: auto !important;
     }
-    
+
     .quranic-title {
         font-size: 3rem;
     }
-    
+
     .quranic-subtitle {
         font-size: 1.2rem;
     }
-    
+
     .research-title {
         font-size: 3rem;
     }
-    
+
     .section-title {
         font-size: 2.2rem;
+    }
+
+    .doc-grid, .stats-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -916,52 +951,51 @@ ul.nav-links li a:hover::after {
         padding: 1.2rem;
         height: 80px;
     }
-    
+
     .research-title {
         font-size: 2.8rem;
     }
-    
+
     .research-description {
         font-size: 1.1rem;
     }
-    
+
     .doc-grid, .stats-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .section-title {
         font-size: 2rem;
     }
-    
+
     .stat-number {
         font-size: 2.5rem;
     }
-    
+
     .quranic-title {
         font-size: 2.5rem;
     }
-    
+
     .quranic-subtitle {
         font-size: 1.1rem;
     }
-    
+
     .quranic-event {
         width: 95%;
         left: 5% !important;
     }
-    
+
     .quranic-event-title {
         font-size: 1.8rem;
     }
-    
-    .quranic-event-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
+
+    .research-section, .documentation-section, .stats-section, .video-section {
+        padding: 4rem 1.5rem;
     }
-    
-    .quranic-verse {
-        font-size: 1.1rem;
+
+    .doc-btn {
+        padding: 0.7rem 1.3rem;
+        font-size: 0.95rem;
     }
 }
 
@@ -969,78 +1003,127 @@ ul.nav-links li a:hover::after {
     .logo-img {
         height: 50px;
     }
-    
+
     .logo-main {
         font-size: 1.5rem;
     }
-    
+
     .research-title {
         font-size: 2.2rem;
     }
-    
+
     .research-description {
         font-size: 1rem;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
-    
+
     .doc-card, .stat-card {
         padding: 1.5rem;
     }
-    
+
     .doc-icon {
         width: 70px;
         height: 70px;
         line-height: 70px;
         font-size: 2.5rem;
     }
-    
+
     .stat-number {
         font-size: 2.2rem;
     }
-    
+
     .video-section, .documentation-section, .stats-section {
         padding: 3rem 1.5rem;
     }
-    
+
     .quranic-container {
         padding: 20px;
         margin: 20px;
     }
-    
+
     .quranic-title {
         font-size: 2rem;
     }
-    
+
     .quranic-header {
         padding: 30px 15px;
     }
-    
+
     .quranic-event-content {
         padding: 20px;
     }
-    
+
     .quranic-event-title {
         font-size: 1.5rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
+
+    .quranic-event-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .quranic-verse {
+        font-size: 1.1rem;
+    }
+
+    .doc-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
 }
 
-.quranic-footer {
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 30px;
-    color: #2c3e50;
-    font-size: 1rem;
-    border-top: 1px solid rgba(10, 92, 54, 0.2);
+@media (max-width: 400px) {
+    .research-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .quranic-title {
+        font-size: 1.8rem;
+    }
+
+    .logo-main {
+        font-size: 1.3rem;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .doc-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
 }
 
-#l{
- 
-color: rgb(255, 255, 255);
+@media (max-height: 500px) and (orientation: landscape) {
+    .research-section {
+        min-height: 120vh;
+    }
 
+    .quranic-header {
+        padding: 30px 15px;
+    }
+
+    .quranic-timeline {
+        padding: 40px 0;
+    }
+}
+
+#l {
+    color: var(--text-light); /* White text */
 }
