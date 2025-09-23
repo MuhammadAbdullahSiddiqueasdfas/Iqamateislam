@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Iqamat-e-Islam
 =======
 # Iqamat-e-Islam_web
@@ -7,3 +8,6 @@
 =======
 # Iqamateislam
 >>>>>>> 3b5767f986798233c565a83943331d05c99ecc58
+=======
+# Iqamateislam
+>>>>>>> 955cef55fdd5c4adbd6898630ba335a648c408d3
