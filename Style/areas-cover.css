@@ -14,6 +14,7 @@
     --glow: 0 0 12px rgba(212, 175, 55, 0.6); /* Gold glow for hover effects */
     --nav-glow: 0 0 18px rgba(212, 175, 55, 0.8); /* Stronger gold glow for nav */
     --subtle-glow: 0 0 15px rgba(212, 175, 55, 0.5); /* Subtle gold glow */
+    --teal: #00d4aa;              /* Teal accent color */
 }
 
 body {
@@ -301,6 +302,163 @@ ul.nav-links li:hover a .nav-text {
     color: var(--text-light); /* White text */
     max-width: 800px;
     margin: 0 auto;
+}
+
+/* Areas We Cover Section - NEW DESIGN FOLLOWING SCREENSHOT */
+.areas-cover-section {
+    padding: 100px 0;
+    background: linear-gradient(to bottom, var(--secondary), var(--primary)); /* Gray gradient */
+    position: relative;
+    overflow: hidden;
+}
+
+.areas-cover-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+    z-index: 0;
+}
+
+.areas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Section Title */
+.areas-section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.areas-section-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 80px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Area Items - Split Layout */
+.area-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+    min-height: 500px;
+    position: relative;
+}
+
+.area-item:last-child {
+    margin-bottom: 0;
+}
+
+/* Alternating Layout */
+.area-item:nth-child(odd) .area-image {
+    order: 1;
+}
+
+.area-item:nth-child(odd) .area-content {
+    order: 2;
+    padding-left: 60px;
+}
+
+.area-item:nth-child(even) .area-image {
+    order: 2;
+}
+
+.area-item:nth-child(even) .area-content {
+    order: 1;
+    padding-right: 60px;
+}
+
+/* Area Image */
+.area-image {
+    flex: 1;
+    position: relative;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s ease;
+}
+
+.area-image:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(212, 175, 55, 0.2);
+}
+
+.area-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.area-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Area Content */
+.area-content {
+    flex: 1;
+    position: relative;
+}
+
+.area-title {
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+    position: relative;
+    display: inline-block;
+}
+
+.area-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--teal);
+    border-radius: 2px;
+}
+
+.area-subtitle {
+    font-size: 1rem;
+    color: var(--teal);
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+.area-description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.area-signature {
+    font-size: 1.8rem;
+    color: var(--accent);
+    font-family: 'Dancing Script', cursive;
+    margin-top: 20px;
 }
 
 /* Branches Section */
@@ -1082,21 +1240,25 @@ ul.nav-links li:hover a .nav-text {
     .branch-container {
         max-width: 1000px;
     }
-
     .page-title {
         font-size: 2.8rem;
     }
-
     .branch-contact-section {
         padding: 4rem 1.5rem;
     }
-
     .insights-section {
         padding: 4rem 1.5rem;
     }
-
     .insights-grid {
         gap: 1.5rem;
+    }
+    
+    /* Areas Section Responsive */
+    .area-item:nth-child(odd) .area-content {
+        padding-left: 40px;
+    }
+    .area-item:nth-child(even) .area-content {
+        padding-right: 40px;
     }
 }
 
@@ -1104,16 +1266,13 @@ ul.nav-links li:hover a .nav-text {
     .page-title {
         font-size: 2.5rem;
     }
-
     .laser-connector {
         display: none;
     }
-
     .branch-row {
         flex-direction: column;
         margin-bottom: 3rem;
     }
-
     .branch-row:nth-child(odd) .branch-info,
     .branch-row:nth-child(even) .branch-info,
     .branch-row:nth-child(odd) .rep-profile,
@@ -1121,17 +1280,33 @@ ul.nav-links li:hover a .nav-text {
         order: unset;
         margin-bottom: 2rem;
     }
-
     .branch-contact-section {
         padding: 3.5rem 1rem;
     }
-
     .insights-grid {
         grid-template-columns: 1fr;
     }
-
     .mission-section {
         padding: 2.5rem;
+    }
+    
+    /* Areas Section Mobile */
+    .area-item {
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+    .area-item:nth-child(odd) .area-content,
+    .area-item:nth-child(even) .area-content {
+        padding: 40px 0 0 0;
+        order: 2;
+    }
+    .area-item:nth-child(odd) .area-image,
+    .area-item:nth-child(even) .area-image {
+        order: 1;
+    }
+    .area-image {
+        height: 300px;
+        margin-bottom: 20px;
     }
 }
 
@@ -1140,15 +1315,12 @@ ul.nav-links li:hover a .nav-text {
         padding: 1.2rem;
         height: 80px;
     }
-
     .mobile-menu-btn {
         display: flex;
     }
-
     .mobile-close-btn {
         display: block;
     }
-
     ul.nav-links {
         position: fixed;
         top: 0;
@@ -1164,76 +1336,70 @@ ul.nav-links li:hover a .nav-text {
         z-index: 1001;
         padding: 2rem;
     }
-
     ul.nav-links.active {
         right: 0;
     }
-
     .main-content {
         margin-top: 90px;
         padding: 1rem;
     }
-
     .page-title {
         font-size: 2.2rem;
     }
-
     .branch-info, .rep-profile {
         padding: 1rem;
     }
-
     .branch-contact-section {
         padding: 3rem 1rem;
     }
-
     .branch-section-heading {
         font-size: 2.2rem;
     }
-
     .branch-contact-card {
         padding: 1.5rem;
     }
-
     .branch-card-name {
         font-size: 1.5rem;
     }
-
     .branch-detail-text {
         font-size: 1rem;
     }
-
     .branch-whatsapp-btn {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
-
     .branch-carousel-btn {
         width: 45px;
         height: 45px;
     }
-
     .insights-section {
         padding: 3rem 1rem;
     }
-
     .section-title {
         font-size: 2.2rem;
     }
-
     .insight-card {
         padding: 1.5rem;
     }
-
     .insight-value {
         font-size: 2rem;
     }
-
     .mission-section {
         padding: 2rem;
     }
-
     .mission-title {
         font-size: 1.7rem;
+    }
+    
+    /* Areas Section Mobile */
+    .areas-section-title {
+        font-size: 2rem;
+    }
+    .area-title {
+        font-size: 1.8rem;
+    }
+    .area-image {
+        height: 250px;
     }
 }
 
@@ -1241,82 +1407,79 @@ ul.nav-links li:hover a .nav-text {
     .logo-img {
         height: 50px;
     }
-
     .logo-main {
         font-size: 1.5rem;
     }
-
     .logo-sub {
         font-size: 0.8rem;
     }
-
     .page-title {
         font-size: 2rem;
     }
-
     .page-subtitle {
         font-size: 1rem;
     }
-
     .branch-name {
         font-size: 1.5rem;
     }
-
     .profile-title {
         font-size: 1.3rem;
     }
-
     .profile-image {
         width: 120px;
         height: 120px;
     }
-
     .branch-contact-section {
         padding: 2.5rem 1rem;
     }
-
     .branch-section-heading {
         font-size: 1.8rem;
     }
-
     .branch-card-icon {
         width: 70px;
         height: 70px;
         line-height: 70px;
         font-size: 2rem;
     }
-
     .branch-card-details {
         padding: 0;
     }
-
     .branch-card-address, .branch-card-phone {
         flex-direction: column;
         gap: 5px;
         text-align: center;
     }
-
     .insights-section {
         padding: 2.5rem 1rem;
     }
-
     .section-title {
         font-size: 1.8rem;
     }
-
     .insight-icon {
         width: 70px;
         height: 70px;
         line-height: 70px;
         font-size: 2rem;
     }
-
     .mission-title {
         font-size: 1.5rem;
     }
-
     .mission-text {
         font-size: 1rem;
+    }
+    
+    /* Areas Section Mobile */
+    .areas-section-title {
+        font-size: 1.8rem;
+    }
+    .area-title {
+        font-size: 1.5rem;
+    }
+    .area-description {
+        font-size: 1rem;
+    }
+    .area-image {
+        height: 200px;
     }
 }
 
@@ -1324,50 +1487,47 @@ ul.nav-links li:hover a .nav-text {
     .logo-main {
         font-size: 1.3rem;
     }
-
     .logo-img {
         height: 40px;
     }
-
     .page-title {
         font-size: 1.8rem;
     }
-
     .branch-name {
         font-size: 1.3rem;
     }
-
     .profile-title {
         font-size: 1.2rem;
     }
-
     .profile-image {
         width: 100px;
         height: 100px;
     }
-
     .branch-section-heading {
         font-size: 1.6rem;
     }
-
     .branch-card-name {
         font-size: 1.3rem;
     }
-
     .branch-whatsapp-btn {
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
     }
-
     .section-title {
         font-size: 1.6rem;
     }
-
     .insight-value {
         font-size: 1.8rem;
     }
-
     .mission-title {
+        font-size: 1.3rem;
+    }
+    
+    /* Areas Section Mobile */
+    .areas-section-title {
+        font-size: 1.6rem;
+    }
+    .area-title {
         font-size: 1.3rem;
     }
 }
