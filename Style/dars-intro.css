@@ -733,26 +733,6 @@ ul.nav-links li:hover a .nav-text {
     padding: 0 1.5rem;
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-    color: var(--accent); /* Gold heading */
-    font-size: 2.8rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: var(--accent); /* Gold line */
-    margin: 15px auto;
-    border-radius: 2px;
-    box-shadow: var(--glow); /* Gold glow */
-}
-
 .intro-text {
     text-align: center;
     max-width: 800px;
@@ -949,6 +929,187 @@ ul.nav-links li:hover a .nav-text {
     line-height: 1.6;
 }
 
+/* Islamic Services Section - Updated to Match Gold Theme */
+.islamic-services-section {
+    padding: 100px 0;
+    background: var(--primary); /* Dark gray background like other sections */
+    position: relative;
+    overflow: hidden;
+}
+
+.islamic-services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%); /* Gold gradient */
+    z-index: 0;
+}
+
+.islamic-services-section .container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    z-index: 2;
+}
+
+/* Section Title - Matching Gold Theme */
+.islamic-services-section .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--accent); /* Gold color like other sections */
+    font-family: 'Playfair Display', serif; /* Matching other section titles */
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.islamic-services-section .section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: var(--accent); /* Gold line like other sections */
+    margin: 15px auto;
+    border-radius: 2px;
+    box-shadow: var(--glow); /* Gold glow */
+}
+
+.islamic-services-section .section-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-light); /* White text like other sections */
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+/* Services Grid - 2x2 Layout on Desktop, Responsive */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Service Cards - Matching Other Section Cards */
+.service-card {
+    background: var(--secondary); /* Lighter gray like other cards */
+    border-radius: 15px;
+    padding: 40px 30px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--accent); /* Gold border like other cards */
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--glow); /* Gold glow like other cards */
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--primary), var(--accent), var(--secondary)); /* Gold gradient like dept cards */
+}
+
+/* Service Icon - Gold Color */
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 175, 55, 0.1); /* Gold background like other icons */
+    border-radius: 50%; /* Circular like other icons */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: all 0.4s ease;
+    animation: pulse 2s infinite; /* Pulse animation like dept icons */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+.service-icon i {
+    font-size: 1.8rem;
+    color: var(--accent); /* Gold color like other icons */
+}
+
+.service-card:hover .service-icon {
+    background: rgba(212, 175, 55, 0.2);
+    transform: scale(1.1);
+    box-shadow: var(--glow); /* Gold glow */
+}
+
+/* Service Title */
+.service-title {
+    color: var(--text-light); /* White text like other sections */
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif; /* Matching other titles */
+    line-height: 1.3;
+}
+
+/* Service Description */
+.service-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-light); /* White text like other sections */
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+/* Service Link - Gold Color */
+.service-link {
+    color: var(--accent); /* Gold color like other links */
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(212, 175, 55, 0.1); /* Subtle gold background */
+    border: 1px solid var(--accent);
+}
+
+.service-link:hover {
+    color: var(--text-light); /* White text on hover */
+    background: var(--accent); /* Gold background on hover */
+    transform: translateX(5px);
+    box-shadow: var(--glow); /* Gold glow */
+}
+
+.service-link i {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.service-link:hover i {
+    transform: translateX(3px);
+}
+
 /* Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -970,11 +1131,9 @@ ul.nav-links li:hover a .nav-text {
     .main-container {
         max-width: 1000px;
     }
-
     .section-title {
         font-size: 2.6rem;
     }
-
     .quran-container {
         gap: 2rem;
     }
@@ -984,30 +1143,34 @@ ul.nav-links li:hover a .nav-text {
     ul.nav-links {
         gap: 0.8rem;
     }
-
     ul.nav-links li a {
         padding: 10px 12px;
         font-size: 0.9rem;
     }
-
     .logo-main {
         font-size: 1.7rem;
     }
-
     .section-title {
         font-size: 2.4rem;
     }
-
     .video-container {
         max-width: 700px;
     }
-
     .quran-image, .quran-content {
         min-width: 100%;
     }
-
     .quran-image {
         transform: perspective(1000px) rotateY(0deg);
+    }
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    .islamic-services-section .section-title {
+        font-size: 2.2rem;
+    }
+    .service-card {
+        padding: 35px 25px;
     }
 }
 
@@ -1016,11 +1179,9 @@ ul.nav-links li:hover a .nav-text {
         padding: 1.2rem;
         height: 80px;
     }
-
     .mobile-menu-btn {
         display: flex;
     }
-
     ul.nav-links {
         position: fixed;
         top: 0;
@@ -1034,379 +1195,26 @@ ul.nav-links li:hover a .nav-text {
         transition: right 0.4s ease;
         box-shadow: -5px 0 15px rgba(0,0,0,0.2);
     }
-
     ul.nav-links.active {
         right: 0;
     }
-
     .dars-intro {
         height: auto;
         min-height: 100vh;
         margin-top: 80px;
     }
-
     .content {
         padding: 1.5rem;
         padding-top: 50px;
     }
-
     .section-title {
         font-size: 2.2rem;
     }
-
     .feature-card {
         margin-bottom: 1rem;
     }
-
     .quote {
         font-size: 1.6rem;
     }
-
-    .quran-importance {
-        padding: 3rem 1.5rem;
-    }
-
-    .section-heading {
-        font-size: 2.2rem;
-    }
-
-    .point {
-        padding: 1rem;
-    }
-
-    .point-title {
-        font-size: 1.2rem;
-    }
-
-    .point-description {
-        padding-left: 0;
-        margin-top: 0.5rem;
-    }
-
-    .point-header {
-        margin-bottom: 0.5rem;
-    }
-
-    .faq-title {
-        font-size: 1.8rem;
-    }
-
-    .faq-question h3 {
-        font-size: 1.1rem;
-    }
-
-    .verse-text {
-        font-size: 1.2rem;
-    }
-
-    .benefits-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 576px) {
-    .logo-img {
-        height: 50px;
-    }
-
-    .logo-main {
-        font-size: 1.5rem;
-    }
-
-    .logo-sub {
-        font-size: 0.8rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .features-title {
-        font-size: 2rem;
-    }
-
-    .quote {
-        font-size: 1.4rem;
-    }
-
-    .quran-importance {
-        padding: 2rem 1rem;
-    }
-
-    .section-heading {
-        font-size: 2rem;
-    }
-
-    .point-icon {
-        font-size: 1.2rem;
-        width: 35px;
-        height: 35px;
-        margin-right: 10px;
-    }
-
-    .faq-header {
-        padding: 1.5rem;
-    }
-
-    .faq-question {
-        padding: 1.2rem;
-    }
-
-    .faq-question h3 {
-        font-size: 1rem;
-    }
-
-    .quran-verse {
-        padding: 1.5rem;
-    }
-
-    .verse-text {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 400px) {
-    .logo-main {
-        font-size: 1.3rem;
-    }
-
-    .logo-img {
-        height: 40px;
-    }
-
-    .section-title {
-        font-size: 1.8rem;
-    }
-
-    .section-heading {
-        font-size: 1.8rem;
-    }
-
-    .faq-title {
-        font-size: 1.6rem;
-    }
-
-    .verse-text {
-        font-size: 1rem;
-    }
-
-    .benefits-title {
-        font-size: 1.8rem;
-    }
-}
-
-
-/* Islamic Services Section - Following Screenshot Design */
-.islamic-services-section {
-    padding: 100px 0;
-    background: var(--primary);
-    position: relative;
-    overflow: hidden;
-}
-
-.islamic-services-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
-    z-index: 0;
-}
-
-.islamic-services-section .container {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    z-index: 2;
-}
-
-/* Section Title - Matching Screenshot */
-.islamic-services-section .section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: var(--text-light);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.islamic-services-section .section-subtitle {
-    text-align: center;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 60px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
-}
-
-/* Services Grid - 2x2 Layout on Desktop, Responsive */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-bottom: 50px;
-}
-
-/* Service Cards - Dark Gray Background with Teal Accents */
-.service-card {
-    background: #2a3a3a; /* Dark gray-green matching screenshot */
-    border-radius: 15px;
-    padding: 40px 30px;
-    text-align: left;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(0, 212, 170, 0.2); /* Teal border */
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 212, 170, 0.15);
-    border-color: rgba(208, 212, 0, 0.4);
-}
-
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 212, 170, 0.05) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: -1;
-}
-
-.service-card:hover::before {
-    opacity: 1;
-}
-
-/* Service Icon - Teal Color */
-.service-icon {
-    width: 60px;
-    height: 60px;
-    background: rgba(0, 212, 170, 0.1);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-    transition: all 0.4s ease;
-}
-
-.service-icon i {
-    font-size: 1.8rem;
-    color: #d4bf00; /* Teal color from screenshot */
-}
-
-.service-card:hover .service-icon {
-    background: rgba(0, 212, 170, 0.2);
-    transform: scale(1.1);
-}
-
-/* Service Title */
-.service-title {
-    color: var(--text-light);
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.3;
-}
-
-/* Service Description */
-.service-description {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 25px;
-}
-
-/* Service Link - Teal Color */
-.service-link {
-    color: #d4b100; /* Teal color */
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-}
-
-.service-link:hover {
-    color: #b89900; /* Darker teal on hover */
-    transform: translateX(5px);
-}
-
-.service-link i {
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-}
-
-.service-link:hover i {
-    transform: translateX(3px);
-}
-
-/* Responsive Design */
-@media (max-width: 992px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-    }
     
-    .islamic-services-section .section-title {
-        font-size: 2.2rem;
-    }
-    
-    .service-card {
-        padding: 35px 25px;
-    }
-}
-
-@media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .service-card {
-        padding: 30px 25px;
-    }
-    
-    .islamic-services-section {
-        padding: 80px 0;
-    }
-    
-    .islamic-services-section .section-title {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .service-card {
-        padding: 25px 20px;
-    }
-    
-    .service-title {
-        font-size: 1.2rem;
-    }
-    
-    .service-description {
-        font-size: 0.9rem;
-    }
-    
-    .islamic-services-section .section-title {
-        font-size: 1.8rem;
-    }
 }
